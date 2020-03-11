@@ -3,6 +3,14 @@ body, html {
     height: 100%;
 }
 
+button {
+  padding: 10px;
+}
+
+input {
+  height: 30px;
+}
+
 #videos {
     position: relative;
     width: 100%;
