@@ -46,6 +46,10 @@ function initializeSession() {
   });
 }
 
+function toggleCamera() {
+  publisher.cycleVideo()
+}
+
 function publishVideo(hasVideo) {
   publisher.publishVideo(hasVideo)
 }
