@@ -5,6 +5,8 @@ var publisher;
 // (optional) add server code here
 //initializeSession();
 
+
+
 // Handling all of our errors here by alerting them
 function handleError(error) {
   if (error) {
