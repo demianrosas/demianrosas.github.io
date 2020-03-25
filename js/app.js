@@ -1,7 +1,6 @@
 // replace these values with those generated in your TokBox Account
 var apiKey = "46535332";
 var sessionId = "1_MX40NjUzNTMzMn5-MTU4MzkzMzA0Njk4NH5nUmtjVzBxM055d0NzTzdHUGg1eFJDL2V-UH4";
-//var token = "T1==cGFydG5lcl9pZD00NjUzNTMzMiZzaWc9YzUwNTY0ZjYzYmM3ZTE3NWQ3ZTYwODVhZTdlMDY1ZDdhODRiMjZlYTpzZXNzaW9uX2lkPTFfTVg0ME5qVXpOVE16TW41LU1UVTRNemt6TXpBME5qazROSDVuVW10alZ6QnhNMDU1ZDBOelR6ZEhVR2cxZUZKREwyVi1VSDQmY3JlYXRlX3RpbWU9MTU4MzkzMzE0NSZub25jZT0wLjI5MjAyODE5MTgwNTY4Nzk1JnJvbGU9cHVibGlzaGVyJmV4cGlyZV90aW1lPTE1ODM5MzY3NDQmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=";
 var publisher;
 // (optional) add server code here
 //initializeSession();
@@ -45,7 +44,11 @@ function initializeSession() {
   });
 }
 
+function publishVideo(hasVideo) {
+  publisher.publishVideo(hasVideo)
+}
+
 function toggleVideo() {
   var hasVideo = publisher.stream.hasVideo
-  publisher.publishVideo(!hasVideo)
+  publishVideo(!hasVideo)
 }
