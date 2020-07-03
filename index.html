@@ -1,20 +1,19 @@
 <html>
-<head>
-    <title> OpenTok Getting Started </title>
-    <link href="css/app.css" rel="stylesheet" type="text/css">
+  <head>
+    <title>OpenTok Getting Started</title>
+    <link href="css/app.css" rel="stylesheet" type="text/css" />
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
-</head>
-<body>
-    <input id="token">
+  </head>
+  <body>
+    <input id="token" />
     <button onclick="initializeSession()">Init session</button>
     <button onclick="toggleVideo()">Toggle video</button>
     <button onclick="publishVideo(true)">Publish video</button>
     <button onclick="toggleCamera()">Toggle camera</button>
     <div id="videos">
-        <div id="subscriber"></div>
-        <div id="publisher"></div>
+      <div id="subscriber"></div>
+      <div id="publisher"></div>
     </div>
-
-</body>
+  </body>
 </html>
