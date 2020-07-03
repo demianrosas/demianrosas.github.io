@@ -43,7 +43,7 @@ function initializeSession() {
     handleError
   );
 
-  publisher.publishVideo(true);
+  //publisher.publishVideo(true);
 
   // Connect to the session
   var tokenInput = document.getElementById("token");
