@@ -36,9 +36,7 @@ function initializeSession() {
     {
       insertMode: "append",
       width: "100%",
-      height: "100%",
-      videoSource:
-        "74cf348252c4411694249d617da13a95b1ded9310dd338e4e43dd8a9f7ecfdfb",
+      height: "100%"
     },
     handleError
   );
