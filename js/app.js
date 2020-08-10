@@ -3,6 +3,7 @@ var apiKey = "46535332";
 var sessionId =
   "1_MX40NjUzNTMzMn5-MTU4MzkzMzA0Njk4NH5nUmtjVzBxM055d0NzTzdHUGg1eFJDL2V-UH4";
 var publisher;
+var session;
 // (optional) add server code here
 //initializeSession();
 
@@ -14,7 +15,7 @@ function handleError(error) {
 }
 
 function initializeSession() {
-  var session = OT.initSession(apiKey, sessionId);
+  session = OT.initSession(apiKey, sessionId);
 
   // Subscribe to a newly created stream
   session.on("streamCreated", function (event) {
@@ -37,8 +38,6 @@ function initializeSession() {
       insertMode: "append",
       width: "100%",
       height: "100%",
-      videoSource:
-        "74cf348252c4411694249d617da13a95b1ded9310dd338e4e43dd8a9f7ecfdfb",
     },
     handleError
   );
@@ -58,6 +57,20 @@ function initializeSession() {
   });
 }
 
+function rePublish() {
+  session.unpublish()
+  publisher = OT.initPublisher(
+    "publisher",
+    {
+      insertMode: "append",
+      width: "100%",
+      height: "100%",
+    },
+    handleError
+  );
+  session.publish(publisher, handleError);
+}
+
 function toggleCamera() {
   publisher.cycleVideo();
 }
@@ -70,3 +83,26 @@ function toggleVideo() {
   var hasVideo = publisher.stream.hasVideo;
   publishVideo(!hasVideo);
 }
+
+/*
+if (API_KEY && TOKEN && SESSION_ID) {
+  apiKey = API_KEY;
+  sessionId = SESSION_ID;
+  token = TOKEN;
+  initializeSession();
+} else if (SAMPLE_SERVER_BASE_URL) {
+  // Make an Ajax request to get the OpenTok API key, session ID, and token from the server
+  fetch(SAMPLE_SERVER_BASE_URL + '/session').then(function fetch(res) {
+    return res.json();
+  }).then(function fetchJson(json) {
+    apiKey = json.apiKey;
+    sessionId = json.sessionId;
+    token = json.token;
+
+    initializeSession();
+  }).catch(function catchErr(error) {
+    handleError(error);
+    alert('Failed to get opentok sessionId and token. Make sure you have updated the config.js file.');
+  });
+}
+*/
