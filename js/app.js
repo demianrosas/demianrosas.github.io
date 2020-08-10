@@ -1,10 +1,25 @@
 // replace these values with those generated in your TokBox Account
-var apiKey = "46535332";
-var sessionId =
-  "1_MX40NjUzNTMzMn5-MTU4MzkzMzA0Njk4NH5nUmtjVzBxM055d0NzTzdHUGg1eFJDL2V-UH4";
+// var apiKey = "46535332";
+// var sessionId = "1_MX40NjUzNTMzMn5-MTU4MzkzMzA0Njk4NH5nUmtjVzBxM055d0NzTzdHUGg1eFJDL2V-UH4";
+var SAMPLE_SERVER_BASE_URL = "https://opentok-web-samples-backend.herokuapp.com";
+var apiKey;
+var sessionId;
+var token;
 var publisher;
 var session;
 // (optional) add server code here
+fetch(SAMPLE_SERVER_BASE_URL + '/session').then(function fetch(res) {
+  return res.json();
+}).then(function fetchJson(json) {
+  apiKey = json.apiKey;
+  sessionId = json.sessionId;
+  token = json.token;
+
+  initializeSession();
+}).catch(function catchErr(error) {
+  handleError(error);
+  alert('Failed to get opentok sessionId and token. Make sure you have updated the config.js file.');
+});
 //initializeSession();
 
 // Handling all of our errors here by alerting them
@@ -45,8 +60,8 @@ function initializeSession() {
   //publisher.publishVideo(true);
 
   // Connect to the session
-  var tokenInput = document.getElementById("token");
-  var token = tokenInput.value;
+  //var tokenInput = document.getElementById("token");
+  //var token = tokenInput.value;
   session.connect(token, function (error) {
     // If the connection is successful, publish to the session
     if (error) {
@@ -58,7 +73,7 @@ function initializeSession() {
 }
 
 function rePublish() {
-  session.unpublish()
+  session.unpublish(publisher)
   publisher = OT.initPublisher(
     "publisher",
     {
